@@ -1,0 +1,2264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Zurichoice Gems & Jewels | Galle, Sri Lanka</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Cinzel:wght@400;500;600;700;900&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #F0D080;
+    --gold-dark: #8B6914;
+    --gold-shimmer: #FFE566;
+    --deep-black: #0A0A0A;
+    --rich-black: #111111;
+    --dark-bg: #141414;
+    --card-bg: #1A1A1A;
+    --card-border: #2A2A2A;
+    --text-primary: #F5F0E8;
+    --text-muted: #9A8F7F;
+    --text-gold: #C9A84C;
+    --ruby: #9B2335;
+    --sapphire: #1B3A8A;
+    --emerald: #1B6B3A;
+    --amethyst: #6B2D8B;
+    --topaz: #C4820A;
+    --diamond: #B9D0E8;
+    --shadow-gold: 0 0 30px rgba(201,168,76,0.15);
+    --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  }
+
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Raleway', sans-serif;
+    background: var(--deep-black);
+    color: var(--text-primary);
+    overflow-x: hidden;
+    cursor: default;
+  }
+
+  /* ═══════════════════════════════════════════
+     SCROLLBAR
+  ═══════════════════════════════════════════ */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--rich-black); }
+  ::-webkit-scrollbar-thumb { background: var(--gold-dark); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
+
+  /* ═══════════════════════════════════════════
+     PARTICLES BACKGROUND
+  ═══════════════════════════════════════════ */
+  #particles { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
+  .particle {
+    position: absolute;
+    width: 2px; height: 2px;
+    background: var(--gold);
+    border-radius: 50%;
+    opacity: 0;
+    animation: float-particle linear infinite;
+  }
+  @keyframes float-particle {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.6; }
+    90% { opacity: 0.3; }
+    100% { transform: translateY(-20px) rotate(720deg); opacity: 0; }
+  }
+
+  /* ═══════════════════════════════════════════
+     LOADER
+  ═══════════════════════════════════════════ */
+  #loader {
+    position: fixed; inset: 0;
+    background: var(--deep-black);
+    z-index: 9999;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    transition: opacity 0.8s ease, visibility 0.8s ease;
+  }
+  #loader.hide { opacity: 0; visibility: hidden; }
+  .loader-gem {
+    width: 80px; height: 80px;
+    animation: gem-spin 2s ease-in-out infinite;
+  }
+  @keyframes gem-spin {
+    0%,100% { transform: rotateY(0deg) scale(1); }
+    50% { transform: rotateY(180deg) scale(1.1); }
+  }
+  .loader-text {
+    font-family: 'Cinzel', serif;
+    color: var(--gold);
+    font-size: 1.2rem;
+    letter-spacing: 6px;
+    margin-top: 20px;
+    animation: pulse-text 1.5s ease-in-out infinite;
+  }
+  @keyframes pulse-text { 0%,100%{opacity:0.5} 50%{opacity:1} }
+  .loader-bar { width: 200px; height: 2px; background: #222; margin-top: 20px; border-radius: 1px; overflow: hidden; }
+  .loader-fill { height: 100%; background: linear-gradient(90deg, var(--gold-dark), var(--gold-shimmer), var(--gold-dark)); animation: load-fill 2.5s ease forwards; }
+  @keyframes load-fill { from{width:0} to{width:100%} }
+
+  /* ═══════════════════════════════════════════
+     TOAST
+  ═══════════════════════════════════════════ */
+  #toast {
+    position: fixed; bottom: 30px; right: 30px;
+    background: linear-gradient(135deg, #1e1e1e, #2a2a2a);
+    border: 1px solid var(--gold);
+    color: var(--text-primary);
+    padding: 14px 22px;
+    border-radius: 8px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.9rem;
+    z-index: 8000;
+    transform: translateX(120%);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: var(--shadow-gold);
+    max-width: 300px;
+  }
+  #toast.show { transform: translateX(0); }
+  #toast i { color: var(--gold); margin-right: 8px; }
+
+  /* ═══════════════════════════════════════════
+     NAVBAR
+  ═══════════════════════════════════════════ */
+  #navbar {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 1000;
+    padding: 0 40px;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    transition: var(--transition);
+  }
+  .nav-inner {
+    max-width: 1400px; margin: 0 auto;
+    display: flex; align-items: center;
+    height: 75px; gap: 0;
+  }
+  .nav-logo {
+    display: flex; align-items: center; gap: 12px;
+    text-decoration: none; flex-shrink: 0;
+  }
+  .logo-gem-icon {
+    width: 42px; height: 42px;
+    filter: drop-shadow(0 0 8px rgba(201,168,76,0.5));
+  }
+  .logo-text { display: flex; flex-direction: column; line-height: 1; }
+  .logo-main {
+    font-family: 'Cinzel', serif;
+    font-size: 1.25rem; font-weight: 700;
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold-shimmer), var(--gold));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    letter-spacing: 2px;
+  }
+  .logo-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 0.7rem; color: var(--text-muted);
+    letter-spacing: 3px; text-transform: uppercase;
+  }
+
+  /* Desktop Nav */
+  .nav-links {
+    display: flex; align-items: center; gap: 6px;
+    list-style: none; margin-left: auto;
+  }
+  .nav-links a {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem; font-weight: 500;
+    color: var(--text-muted);
+    text-decoration: none;
+    padding: 8px 14px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    transition: var(--transition);
+    border-radius: 4px;
+    position: relative;
+  }
+  .nav-links a::after {
+    content: ''; position: absolute;
+    bottom: 4px; left: 50%; right: 50%;
+    height: 1px; background: var(--gold);
+    transition: var(--transition);
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-links a:hover::after { left: 14px; right: 14px; }
+
+  /* Dropdown */
+  .has-dropdown { position: relative; }
+  .dropdown-menu {
+    position: absolute; top: calc(100% + 10px); left: 50%;
+    transform: translateX(-50%) translateY(-10px);
+    background: #161616;
+    border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 10px;
+    padding: 10px;
+    min-width: 200px;
+    opacity: 0; visibility: hidden;
+    transition: var(--transition);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.8), var(--shadow-gold);
+    z-index: 100;
+  }
+  .has-dropdown:hover .dropdown-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(0); }
+  .dropdown-menu a {
+    display: flex; align-items: center; gap: 10px;
+    padding: 10px 14px !important;
+    border-radius: 6px;
+    font-size: 0.78rem !important;
+  }
+  .dropdown-menu a:hover { background: rgba(201,168,76,0.1); }
+  .dropdown-menu a i { width: 16px; text-align: center; font-size: 0.9rem; }
+  .dropdown-menu a::after { display: none !important; }
+  .gem-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  /* Nav Actions */
+  .nav-actions { display: flex; align-items: center; gap: 8px; margin-left: 20px; }
+  .nav-btn {
+    background: none; border: none; cursor: pointer;
+    color: var(--text-muted); font-size: 1rem;
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    transition: var(--transition);
+    position: relative;
+  }
+  .nav-btn:hover { color: var(--gold); background: rgba(201,168,76,0.1); }
+  .cart-badge {
+    position: absolute; top: 2px; right: 2px;
+    width: 16px; height: 16px;
+    background: var(--gold);
+    border-radius: 50%;
+    font-size: 0.6rem; font-weight: 700;
+    color: #000;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Raleway', sans-serif;
+    display: none;
+  }
+  .btn-signin {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem; letter-spacing: 1.5px;
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    color: #000; border: none; cursor: pointer;
+    padding: 9px 20px; border-radius: 6px;
+    font-weight: 600; transition: var(--transition);
+    white-space: nowrap;
+  }
+  .btn-signin:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(201,168,76,0.4); }
+
+  /* Hamburger */
+  .hamburger {
+    display: none; flex-direction: column; gap: 5px;
+    background: none; border: none; cursor: pointer; padding: 5px;
+  }
+  .hamburger span {
+    display: block; width: 24px; height: 2px;
+    background: var(--gold); border-radius: 2px;
+    transition: var(--transition);
+  }
+  .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+  /* Mobile Nav */
+  #mobile-nav {
+    display: none; position: fixed;
+    top: 75px; left: 0; right: 0; bottom: 0;
+    background: rgba(10,10,10,0.98);
+    backdrop-filter: blur(30px);
+    z-index: 999; overflow-y: auto;
+    padding: 30px 30px;
+    transform: translateX(-100%);
+    transition: transform 0.4s ease;
+  }
+  #mobile-nav.open { transform: translateX(0); }
+  .mobile-nav-link {
+    display: block; padding: 16px 0;
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem; color: var(--text-muted);
+    text-decoration: none; letter-spacing: 2px;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    transition: var(--transition);
+  }
+  .mobile-nav-link:hover { color: var(--gold); padding-left: 10px; }
+  .mobile-nav-section { margin: 20px 0 10px; font-family: 'Raleway', sans-serif; font-size: 0.7rem; color: var(--gold); letter-spacing: 3px; text-transform: uppercase; }
+  .mobile-cat-link {
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 0; color: var(--text-muted);
+    text-decoration: none; font-size: 0.9rem;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    transition: var(--transition);
+  }
+  .mobile-cat-link:hover { color: var(--gold); padding-left: 8px; }
+
+  /* ═══════════════════════════════════════════
+     PAGES SYSTEM
+  ═══════════════════════════════════════════ */
+  .page { display: none; min-height: 100vh; }
+  .page.active { display: block; }
+
+  /* ═══════════════════════════════════════════
+     HOME PAGE
+  ═══════════════════════════════════════════ */
+  #hero {
+    position: relative; min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+    padding-top: 75px;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 60% at 30% 40%, rgba(201,168,76,0.08) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 50% at 70% 60%, rgba(155,35,53,0.06) 0%, transparent 60%),
+      radial-gradient(ellipse 40% 40% at 50% 20%, rgba(27,58,138,0.06) 0%, transparent 60%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0; opacity: 0.03;
+    background-image: linear-gradient(var(--gold) 1px, transparent 1px), linear-gradient(90deg, var(--gold) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-content {
+    position: relative; z-index: 2;
+    text-align: center; max-width: 900px;
+    padding: 0 30px;
+    animation: hero-enter 1.2s ease forwards;
+  }
+  @keyframes hero-enter {
+    from { opacity: 0; transform: translateY(40px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .hero-badge {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: rgba(201,168,76,0.1);
+    border: 1px solid rgba(201,168,76,0.3);
+    padding: 8px 20px; border-radius: 50px;
+    margin-bottom: 30px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.75rem; font-weight: 600;
+    color: var(--gold); letter-spacing: 3px; text-transform: uppercase;
+    animation: hero-enter 1s ease 0.2s both;
+  }
+  .hero-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2.8rem, 7vw, 6rem);
+    font-weight: 700; line-height: 1.05;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #F5F0E8 0%, var(--gold) 40%, var(--gold-light) 60%, #F5F0E8 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-size: 200% 200%;
+    animation: shimmer-title 4s ease infinite, hero-enter 1s ease 0.4s both;
+  }
+  @keyframes shimmer-title { 0%,100%{background-position:0% 50%} 50%{background-position:100% 50%} }
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1rem, 2.5vw, 1.6rem);
+    color: var(--gold); letter-spacing: 6px;
+    margin-bottom: 30px; font-style: italic;
+    animation: hero-enter 1s ease 0.5s both;
+  }
+  .hero-desc {
+    font-size: 1rem; color: var(--text-muted);
+    line-height: 1.8; max-width: 600px; margin: 0 auto 50px;
+    animation: hero-enter 1s ease 0.6s both;
+  }
+  .hero-actions {
+    display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;
+    animation: hero-enter 1s ease 0.8s both;
+  }
+  .btn-primary {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase;
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold), var(--gold-light));
+    color: #0A0A0A; border: none; cursor: pointer;
+    padding: 16px 40px; border-radius: 4px;
+    transition: var(--transition);
+    text-decoration: none; display: inline-block;
+    position: relative; overflow: hidden;
+  }
+  .btn-primary::before {
+    content: ''; position: absolute; top: 0; left: -100%;
+    width: 100%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.5s ease;
+  }
+  .btn-primary:hover::before { left: 100%; }
+  .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 40px rgba(201,168,76,0.4); }
+  .btn-outline {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem; font-weight: 500;
+    letter-spacing: 2px; text-transform: uppercase;
+    background: transparent;
+    color: var(--gold); cursor: pointer;
+    padding: 15px 40px; border-radius: 4px;
+    border: 1px solid rgba(201,168,76,0.5);
+    transition: var(--transition);
+    text-decoration: none; display: inline-block;
+  }
+  .btn-outline:hover { background: rgba(201,168,76,0.1); border-color: var(--gold); transform: translateY(-3px); }
+
+  .hero-gems-floating {
+    position: absolute; inset: 0; pointer-events: none; z-index: 1;
+  }
+  .float-gem {
+    position: absolute;
+    font-size: 2rem;
+    animation: float-gem linear infinite;
+    opacity: 0.3;
+  }
+  @keyframes float-gem {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0.3; }
+    50% { opacity: 0.6; }
+    100% { transform: translateY(-30px) rotate(15deg); opacity: 0.3; }
+  }
+  .scroll-hint {
+    position: absolute; bottom: 30px; left: 50%;
+    transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+    color: var(--text-muted); font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase;
+    animation: bounce-hint 2s ease infinite;
+    z-index: 2;
+  }
+  .scroll-hint i { font-size: 1rem; color: var(--gold); }
+  @keyframes bounce-hint { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
+
+  /* Stats */
+  .stats-bar {
+    background: linear-gradient(135deg, #161616, #1e1e1e);
+    border-top: 1px solid rgba(201,168,76,0.15);
+    border-bottom: 1px solid rgba(201,168,76,0.15);
+    padding: 40px;
+  }
+  .stats-inner {
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+  }
+  .stat-item { text-align: center; }
+  .stat-num {
+    font-family: 'Cinzel', serif;
+    font-size: 2.2rem; font-weight: 700;
+    color: var(--gold);
+    display: block; margin-bottom: 5px;
+  }
+  .stat-label { font-size: 0.75rem; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase; }
+
+  /* Section Styles */
+  section { position: relative; z-index: 1; }
+  .section-header { text-align: center; margin-bottom: 60px; }
+  .section-tag {
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.7rem; font-weight: 600;
+    color: var(--gold); letter-spacing: 5px;
+    text-transform: uppercase; display: block; margin-bottom: 16px;
+  }
+  .section-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2rem, 4vw, 3rem); font-weight: 600;
+    background: linear-gradient(135deg, var(--text-primary), var(--gold-light));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    line-height: 1.2; margin-bottom: 16px;
+  }
+  .section-divider {
+    width: 80px; height: 2px; margin: 20px auto 0;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .section-desc { color: var(--text-muted); max-width: 500px; margin: 20px auto 0; font-size: 0.95rem; line-height: 1.7; }
+
+  /* Padding Sections */
+  .py-100 { padding: 100px 40px; }
+  .py-80 { padding: 80px 40px; }
+  .container { max-width: 1300px; margin: 0 auto; }
+
+  /* ═══════════════════════════════════════════
+     CATEGORIES SECTION
+  ═══════════════════════════════════════════ */
+  .categories-section { background: var(--rich-black); }
+  .cat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 20px;
+  }
+  .cat-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 12px; padding: 30px 20px;
+    text-align: center; cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+    display: flex; flex-direction: column; align-items: center; gap: 12px;
+  }
+  .cat-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5), var(--shadow-gold);
+  }
+  .cat-icon {
+    width: 60px; height: 60px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.6rem;
+    background: linear-gradient(135deg, rgba(201,168,76,0.1), rgba(201,168,76,0.05));
+    border: 1px solid rgba(201,168,76,0.2);
+  }
+  .cat-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem; font-weight: 500;
+    color: var(--text-primary); letter-spacing: 1px;
+  }
+  .cat-count { font-size: 0.72rem; color: var(--text-muted); }
+
+  /* ═══════════════════════════════════════════
+     FEATURED GEMS
+  ═══════════════════════════════════════════ */
+  .featured-section { background: var(--dark-bg); }
+  .filter-bar {
+    display: flex; gap: 10px; flex-wrap: wrap;
+    justify-content: center; margin-bottom: 50px;
+  }
+  .filter-btn {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem; font-weight: 500;
+    letter-spacing: 1px; text-transform: uppercase;
+    padding: 10px 22px; border-radius: 50px;
+    border: 1px solid rgba(201,168,76,0.3);
+    background: transparent; color: var(--text-muted);
+    cursor: pointer; transition: var(--transition);
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    color: #000; border-color: transparent;
+  }
+
+  .gems-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+  }
+  .gem-card {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px; overflow: hidden;
+    transition: var(--transition);
+    position: relative;
+  }
+  .gem-card:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-6px); box-shadow: 0 25px 60px rgba(0,0,0,0.6), var(--shadow-gold); }
+  .gem-card-img {
+    width: 100%; height: 240px;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    background: linear-gradient(135deg, #1e1e1e, #252525);
+  }
+  .gem-emoji { font-size: 5rem; filter: drop-shadow(0 0 20px rgba(201,168,76,0.4)); transition: var(--transition); }
+  .gem-card:hover .gem-emoji { transform: scale(1.15) rotate(5deg); filter: drop-shadow(0 0 30px rgba(201,168,76,0.7)); }
+  .gem-card-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to bottom, transparent 50%, rgba(10,10,10,0.6) 100%);
+  }
+  .gem-badge {
+    position: absolute; top: 14px; left: 14px;
+    padding: 5px 14px; border-radius: 50px;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.65rem; font-weight: 700;
+    letter-spacing: 2px; text-transform: uppercase;
+  }
+  .badge-new { background: rgba(27,107,58,0.9); color: #4ade80; border: 1px solid rgba(74,222,128,0.3); }
+  .badge-rare { background: rgba(107,45,139,0.9); color: #c084fc; border: 1px solid rgba(192,132,252,0.3); }
+  .badge-sale { background: rgba(155,35,53,0.9); color: #f87171; border: 1px solid rgba(248,113,113,0.3); }
+  .badge-hot { background: rgba(196,130,10,0.9); color: #fbbf24; border: 1px solid rgba(251,191,36,0.3); }
+
+  .gem-wishlist {
+    position: absolute; top: 14px; right: 14px;
+    width: 34px; height: 34px; border-radius: 50%;
+    background: rgba(10,10,10,0.7); border: 1px solid rgba(201,168,76,0.3);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; color: var(--text-muted); font-size: 0.85rem;
+    transition: var(--transition); backdrop-filter: blur(5px);
+  }
+  .gem-wishlist:hover, .gem-wishlist.active { color: #f87171; border-color: #f87171; background: rgba(248,113,113,0.15); }
+
+  .gem-card-body { padding: 22px; }
+  .gem-category { font-size: 0.68rem; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+  .gem-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.05rem; font-weight: 600;
+    color: var(--text-primary); margin-bottom: 10px;
+  }
+  .gem-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; }
+  .gem-specs {
+    display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 16px;
+  }
+  .gem-spec {
+    background: rgba(201,168,76,0.06);
+    border: 1px solid rgba(201,168,76,0.15);
+    padding: 4px 10px; border-radius: 4px;
+    font-size: 0.68rem; color: var(--text-muted); letter-spacing: 0.5px;
+  }
+  .gem-spec span { color: var(--gold); font-weight: 600; }
+  .gem-card-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .gem-price {
+    display: flex; flex-direction: column;
+  }
+  .price-usd {
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem; font-weight: 700;
+    color: var(--gold); line-height: 1;
+  }
+  .price-lkr { font-size: 0.72rem; color: var(--text-muted); }
+  .price-old { font-size: 0.8rem; color: var(--text-muted); text-decoration: line-through; }
+  .btn-add-cart {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 1.5px;
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    color: #000; border: none; cursor: pointer;
+    padding: 10px 18px; border-radius: 6px;
+    transition: var(--transition);
+    white-space: nowrap;
+  }
+  .btn-add-cart:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(201,168,76,0.4); }
+
+  /* ═══════════════════════════════════════════
+     JEWELRY SECTION
+  ═══════════════════════════════════════════ */
+  .jewelry-section { background: var(--rich-black); }
+  .jewelry-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 30px;
+  }
+  .jewelry-card {
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    border-radius: 16px; overflow: hidden; cursor: pointer;
+    transition: var(--transition); display: flex;
+  }
+  .jewelry-card:hover { border-color: rgba(201,168,76,0.4); box-shadow: 0 20px 50px rgba(0,0,0,0.5), var(--shadow-gold); }
+  .jewelry-img {
+    width: 160px; min-height: 180px; flex-shrink: 0;
+    background: linear-gradient(135deg, #1e1e1e, #252525);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 4rem; transition: var(--transition);
+  }
+  .jewelry-card:hover .jewelry-img { font-size: 4.5rem; }
+  .jewelry-info { padding: 24px; }
+  .jewelry-cat { font-size: 0.68rem; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 8px; }
+  .jewelry-name { font-family: 'Cinzel', serif; font-size: 1rem; color: var(--text-primary); margin-bottom: 8px; }
+  .jewelry-desc { font-size: 0.82rem; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px; }
+  .jewelry-price { font-family: 'Cinzel', serif; font-size: 1.2rem; color: var(--gold); font-weight: 700; margin-bottom: 14px; }
+  .btn-jewelry {
+    font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 1.5px;
+    background: transparent; border: 1px solid var(--gold); color: var(--gold);
+    padding: 8px 18px; border-radius: 5px; cursor: pointer; transition: var(--transition);
+  }
+  .btn-jewelry:hover { background: rgba(201,168,76,0.15); }
+
+  /* ═══════════════════════════════════════════
+     BANNER / PROMO
+  ═══════════════════════════════════════════ */
+  .promo-section {
+    background: linear-gradient(135deg, #0e0a02, #1a1200, #0e0802);
+    border-top: 1px solid rgba(201,168,76,0.2);
+    border-bottom: 1px solid rgba(201,168,76,0.2);
+    text-align: center; padding: 80px 40px;
+    position: relative; overflow: hidden;
+  }
+  .promo-section::before {
+    content: ''; position: absolute; top: -50%; left: -50%;
+    width: 200%; height: 200%;
+    background: radial-gradient(ellipse 50% 60% at 50% 50%, rgba(201,168,76,0.08) 0%, transparent 70%);
+  }
+  .promo-section h2 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2rem, 5vw, 4rem); font-weight: 700;
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold-shimmer), var(--gold-dark));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    margin-bottom: 16px; position: relative; z-index: 1;
+  }
+  .promo-section p { color: var(--text-muted); font-size: 1rem; margin-bottom: 30px; position: relative; z-index: 1; }
+
+  /* ═══════════════════════════════════════════
+     TESTIMONIALS
+  ═══════════════════════════════════════════ */
+  .testimonials-section { background: var(--dark-bg); }
+  .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 25px; }
+  .testimonial-card {
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    border-radius: 12px; padding: 30px;
+  }
+  .test-stars { color: var(--gold); margin-bottom: 16px; font-size: 1rem; }
+  .test-text { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-style: italic; color: var(--text-primary); line-height: 1.7; margin-bottom: 20px; }
+  .test-author { display: flex; align-items: center; gap: 12px; }
+  .test-avatar { width: 42px; height: 42px; border-radius: 50%; background: linear-gradient(135deg, var(--gold-dark), var(--gold)); display: flex; align-items: center; justify-content: center; font-family: 'Cinzel', serif; font-weight: 700; color: #000; font-size: 0.9rem; }
+  .test-name { font-family: 'Cinzel', serif; font-size: 0.85rem; color: var(--text-primary); }
+  .test-location { font-size: 0.72rem; color: var(--text-muted); }
+
+  /* ═══════════════════════════════════════════
+     FOOTER
+  ═══════════════════════════════════════════ */
+  footer {
+    background: #080808;
+    border-top: 1px solid rgba(201,168,76,0.2);
+    padding: 70px 40px 30px;
+  }
+  .footer-inner { max-width: 1300px; margin: 0 auto; }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 50px; margin-bottom: 50px; }
+  .footer-brand p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.8; margin: 20px 0; }
+  .footer-socials { display: flex; gap: 10px; }
+  .social-btn {
+    width: 38px; height: 38px; border-radius: 8px;
+    border: 1px solid rgba(201,168,76,0.3);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-muted); font-size: 0.9rem;
+    text-decoration: none; transition: var(--transition);
+  }
+  .social-btn:hover { color: var(--gold); border-color: var(--gold); background: rgba(201,168,76,0.1); }
+  .footer-col h4 { font-family: 'Cinzel', serif; font-size: 0.85rem; color: var(--text-primary); letter-spacing: 1.5px; margin-bottom: 20px; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-links a { color: var(--text-muted); text-decoration: none; font-size: 0.85rem; transition: var(--transition); }
+  .footer-links a:hover { color: var(--gold); padding-left: 6px; }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding-top: 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;
+  }
+  .footer-copy { font-size: 0.8rem; color: var(--text-muted); }
+  .footer-pay { display: flex; gap: 10px; align-items: center; }
+  .pay-icon {
+    background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1);
+    padding: 6px 12px; border-radius: 5px; font-size: 0.7rem; color: var(--text-muted);
+    letter-spacing: 1px;
+  }
+
+  /* ═══════════════════════════════════════════
+     SHOP PAGE
+  ═══════════════════════════════════════════ */
+  .page-hero {
+    padding: 130px 40px 70px;
+    background: linear-gradient(to bottom, var(--rich-black), var(--dark-bg));
+    text-align: center; position: relative; overflow: hidden;
+  }
+  .page-hero::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .page-hero h1 { font-family: 'Cinzel', serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 600; color: var(--text-primary); margin-bottom: 10px; }
+  .page-hero p { color: var(--text-muted); font-size: 0.95rem; }
+  .breadcrumb { display: flex; gap: 8px; align-items: center; justify-content: center; margin-bottom: 16px; font-size: 0.8rem; color: var(--text-muted); }
+  .breadcrumb span { color: var(--gold); cursor: pointer; }
+  .breadcrumb span:hover { text-decoration: underline; }
+
+  .shop-layout { display: grid; grid-template-columns: 260px 1fr; gap: 40px; padding: 60px 40px; max-width: 1400px; margin: 0 auto; }
+  .shop-sidebar { position: sticky; top: 90px; align-self: start; }
+  .sidebar-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; padding: 24px; margin-bottom: 20px; }
+  .sidebar-title { font-family: 'Cinzel', serif; font-size: 0.82rem; color: var(--text-primary); letter-spacing: 1.5px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
+  .sidebar-clear { font-size: 0.7rem; color: var(--gold); cursor: pointer; letter-spacing: 1px; font-family: 'Raleway', sans-serif; }
+  .sidebar-clear:hover { text-decoration: underline; }
+  .filter-group { margin-bottom: 18px; }
+  .filter-group label { display: flex; align-items: center; gap: 10px; cursor: pointer; color: var(--text-muted); font-size: 0.83rem; padding: 7px 0; transition: var(--transition); }
+  .filter-group label:hover { color: var(--text-primary); }
+  .filter-group input[type=checkbox] { accent-color: var(--gold); width: 15px; height: 15px; }
+  .price-range { width: 100%; accent-color: var(--gold); cursor: pointer; }
+  .price-values { display: flex; justify-content: space-between; margin-top: 10px; font-size: 0.78rem; color: var(--text-muted); }
+
+  .shop-main-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; flex-wrap: wrap; gap: 12px; }
+  .results-count { font-size: 0.85rem; color: var(--text-muted); }
+  .results-count strong { color: var(--text-primary); }
+  .sort-select {
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    color: var(--text-primary); padding: 9px 15px; border-radius: 8px;
+    font-family: 'Raleway', sans-serif; font-size: 0.82rem; cursor: pointer;
+  }
+  .sort-select:focus { outline: none; border-color: var(--gold); }
+
+  /* ═══════════════════════════════════════════
+     CART SIDEBAR
+  ═══════════════════════════════════════════ */
+  #cart-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,0.7);
+    z-index: 2000; opacity: 0; visibility: hidden; transition: var(--transition);
+    backdrop-filter: blur(5px);
+  }
+  #cart-overlay.open { opacity: 1; visibility: visible; }
+  #cart-sidebar {
+    position: fixed; top: 0; right: 0; bottom: 0;
+    width: 420px; max-width: 95vw;
+    background: #121212; z-index: 2001;
+    transform: translateX(100%); transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    display: flex; flex-direction: column;
+    border-left: 1px solid rgba(201,168,76,0.2);
+  }
+  #cart-sidebar.open { transform: translateX(0); }
+  .cart-header {
+    padding: 24px 28px; border-bottom: 1px solid rgba(201,168,76,0.15);
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .cart-header h3 { font-family: 'Cinzel', serif; font-size: 1rem; color: var(--text-primary); letter-spacing: 2px; }
+  .cart-close {
+    background: none; border: none; cursor: pointer;
+    color: var(--text-muted); font-size: 1.2rem; transition: var(--transition);
+  }
+  .cart-close:hover { color: var(--gold); transform: rotate(90deg); }
+  .cart-items { flex: 1; overflow-y: auto; padding: 20px 28px; }
+  .cart-empty { text-align: center; padding: 60px 20px; color: var(--text-muted); }
+  .cart-empty i { font-size: 3rem; color: rgba(201,168,76,0.2); margin-bottom: 16px; display: block; }
+  .cart-empty p { font-family: 'Cinzel', serif; font-size: 1rem; color: var(--text-muted); margin-bottom: 6px; }
+  .cart-item {
+    display: flex; gap: 14px; padding: 16px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+  .cart-item-icon { width: 64px; height: 64px; border-radius: 10px; background: #1e1e1e; display: flex; align-items: center; justify-content: center; font-size: 2rem; flex-shrink: 0; }
+  .cart-item-info { flex: 1; }
+  .cart-item-name { font-family: 'Cinzel', serif; font-size: 0.85rem; color: var(--text-primary); margin-bottom: 4px; }
+  .cart-item-cat { font-size: 0.7rem; color: var(--text-muted); margin-bottom: 8px; }
+  .cart-item-controls { display: flex; align-items: center; gap: 10px; }
+  .qty-btn {
+    width: 26px; height: 26px; border-radius: 5px;
+    border: 1px solid rgba(201,168,76,0.3); background: none;
+    color: var(--gold); cursor: pointer; font-size: 0.9rem;
+    display: flex; align-items: center; justify-content: center;
+    transition: var(--transition);
+  }
+  .qty-btn:hover { background: rgba(201,168,76,0.15); }
+  .qty-num { font-size: 0.85rem; color: var(--text-primary); min-width: 20px; text-align: center; }
+  .cart-item-price { font-family: 'Cinzel', serif; font-size: 0.95rem; color: var(--gold); font-weight: 600; align-self: center; }
+  .cart-remove { background: none; border: none; cursor: pointer; color: var(--text-muted); font-size: 0.85rem; transition: var(--transition); align-self: flex-start; padding: 4px; }
+  .cart-remove:hover { color: #f87171; }
+  .cart-footer { padding: 24px 28px; border-top: 1px solid rgba(201,168,76,0.15); }
+  .cart-subtotal { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+  .cart-subtotal span { font-size: 0.85rem; color: var(--text-muted); }
+  .cart-subtotal strong { font-family: 'Cinzel', serif; font-size: 1rem; color: var(--gold); }
+  .cart-divider { height: 1px; background: rgba(255,255,255,0.06); margin: 14px 0; }
+  .cart-total { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+  .cart-total span { font-family: 'Cinzel', serif; font-size: 0.9rem; color: var(--text-primary); letter-spacing: 1px; }
+  .cart-total strong { font-family: 'Cinzel', serif; font-size: 1.3rem; color: var(--gold); }
+  .btn-checkout {
+    width: 100%; font-family: 'Cinzel', serif;
+    font-size: 0.85rem; font-weight: 600; letter-spacing: 2px;
+    background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+    color: #000; border: none; cursor: pointer;
+    padding: 16px; border-radius: 8px; transition: var(--transition);
+  }
+  .btn-checkout:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(201,168,76,0.4); }
+
+  /* ═══════════════════════════════════════════
+     PAYMENT PAGE
+  ═══════════════════════════════════════════ */
+  .payment-page { padding: 130px 40px 80px; background: var(--dark-bg); min-height: 100vh; }
+  .payment-container { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.2fr; gap: 40px; }
+  .payment-summary { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 30px; align-self: start; }
+  .payment-summary h3 { font-family: 'Cinzel', serif; font-size: 1rem; color: var(--text-primary); letter-spacing: 2px; margin-bottom: 24px; border-bottom: 1px solid rgba(201,168,76,0.15); padding-bottom: 16px; }
+  .order-item { display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+  .order-item-icon { width: 50px; height: 50px; border-radius: 8px; background: #1e1e1e; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; }
+  .order-item-name { font-size: 0.88rem; color: var(--text-primary); margin-bottom: 4px; }
+  .order-item-qty { font-size: 0.75rem; color: var(--text-muted); }
+  .order-item-price { font-family: 'Cinzel', serif; font-size: 0.95rem; color: var(--gold); margin-left: auto; }
+  .order-total-row { display: flex; justify-content: space-between; padding: 10px 0; font-size: 0.85rem; color: var(--text-muted); }
+  .order-total-row.grand { border-top: 1px solid rgba(201,168,76,0.2); margin-top: 6px; padding-top: 14px; }
+  .order-total-row.grand span:first-child { font-family: 'Cinzel', serif; color: var(--text-primary); font-size: 0.95rem; }
+  .order-total-row.grand span:last-child { font-family: 'Cinzel', serif; font-size: 1.2rem; color: var(--gold); font-weight: 700; }
+
+  .payment-form-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 30px; }
+  .payment-form-card h3 { font-family: 'Cinzel', serif; font-size: 1rem; color: var(--text-primary); letter-spacing: 2px; margin-bottom: 24px; }
+  .form-tabs { display: flex; gap: 0; margin-bottom: 24px; border: 1px solid rgba(201,168,76,0.2); border-radius: 8px; overflow: hidden; }
+  .form-tab {
+    flex: 1; padding: 12px; text-align: center;
+    font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 1.5px;
+    cursor: pointer; color: var(--text-muted); background: none;
+    border: none; transition: var(--transition);
+  }
+  .form-tab.active { background: linear-gradient(135deg, var(--gold-dark), var(--gold)); color: #000; font-weight: 600; }
+  .form-group { margin-bottom: 18px; }
+  .form-label { display: block; font-size: 0.75rem; color: var(--text-muted); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 8px; }
+  .form-input {
+    width: 100%; background: #1e1e1e; border: 1px solid var(--card-border);
+    color: var(--text-primary); padding: 12px 16px; border-radius: 8px;
+    font-family: 'Raleway', sans-serif; font-size: 0.9rem;
+    transition: var(--transition); outline: none;
+  }
+  .form-input:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,168,76,0.1); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .card-icons { display: flex; gap: 8px; margin-bottom: 18px; }
+  .card-icon { padding: 6px 12px; border: 1px solid rgba(255,255,255,0.1); border-radius: 5px; font-size: 0.72rem; color: var(--text-muted); }
+  .secure-badge {
+    display: flex; align-items: center; gap: 8px;
+    background: rgba(27,107,58,0.1); border: 1px solid rgba(27,107,58,0.3);
+    border-radius: 8px; padding: 12px 16px; margin-bottom: 20px;
+    font-size: 0.78rem; color: #4ade80;
+  }
+  .secure-badge i { color: #4ade80; }
+
+  /* ═══════════════════════════════════════════
+     SIGNIN PAGE
+  ═══════════════════════════════════════════ */
+  .auth-page { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 110px 20px 60px; background: var(--dark-bg); }
+  .auth-card { background: var(--card-bg); border: 1px solid rgba(201,168,76,0.2); border-radius: 20px; padding: 50px 45px; width: 100%; max-width: 440px; position: relative; overflow: hidden; }
+  .auth-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+  .auth-logo { text-align: center; margin-bottom: 35px; }
+  .auth-logo .logo-gem-icon { width: 56px; height: 56px; margin: 0 auto 12px; display: block; }
+  .auth-logo h2 { font-family: 'Cinzel', serif; font-size: 1.1rem; color: var(--text-primary); letter-spacing: 2px; }
+  .auth-tabs { display: flex; background: #1a1a1a; border-radius: 8px; padding: 4px; margin-bottom: 30px; }
+  .auth-tab { flex: 1; padding: 10px; text-align: center; border-radius: 6px; cursor: pointer; font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 1.5px; color: var(--text-muted); border: none; background: none; transition: var(--transition); }
+  .auth-tab.active { background: linear-gradient(135deg, var(--gold-dark), var(--gold)); color: #000; font-weight: 600; }
+  .auth-form { display: none; }
+  .auth-form.active { display: block; }
+  .form-divider { display: flex; align-items: center; gap: 12px; margin: 20px 0; }
+  .form-divider span { font-size: 0.75rem; color: var(--text-muted); white-space: nowrap; }
+  .form-divider::before, .form-divider::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.08); }
+  .social-auth { display: flex; gap: 10px; margin-bottom: 20px; }
+  .social-auth-btn {
+    flex: 1; padding: 11px; border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px; background: none; color: var(--text-muted);
+    font-size: 0.8rem; cursor: pointer; transition: var(--transition);
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+  }
+  .social-auth-btn:hover { border-color: var(--gold); color: var(--text-primary); }
+  .auth-footer-text { text-align: center; font-size: 0.8rem; color: var(--text-muted); margin-top: 20px; }
+  .auth-footer-text a { color: var(--gold); cursor: pointer; }
+
+  /* ═══════════════════════════════════════════
+     CONTACT PAGE
+  ═══════════════════════════════════════════ */
+  .contact-layout { display: grid; grid-template-columns: 1fr 1.5fr; gap: 50px; padding: 70px 40px; max-width: 1200px; margin: 0 auto; }
+  .contact-info h2 { font-family: 'Cinzel', serif; font-size: 2rem; color: var(--text-primary); margin-bottom: 16px; }
+  .contact-info p { color: var(--text-muted); line-height: 1.8; margin-bottom: 35px; }
+  .contact-detail {
+    display: flex; align-items: flex-start; gap: 16px;
+    padding: 20px; border-radius: 12px;
+    background: var(--card-bg); border: 1px solid var(--card-border);
+    margin-bottom: 16px; transition: var(--transition);
+  }
+  .contact-detail:hover { border-color: rgba(201,168,76,0.3); }
+  .contact-icon {
+    width: 44px; height: 44px; border-radius: 10px;
+    background: linear-gradient(135deg, rgba(201,168,76,0.15), rgba(201,168,76,0.05));
+    border: 1px solid rgba(201,168,76,0.2);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--gold); font-size: 1rem; flex-shrink: 0;
+  }
+  .contact-detail-text h4 { font-family: 'Cinzel', serif; font-size: 0.85rem; color: var(--text-primary); margin-bottom: 6px; letter-spacing: 1px; }
+  .contact-detail-text p { color: var(--text-muted); font-size: 0.85rem; margin: 0; line-height: 1.6; }
+  .contact-social { display: flex; gap: 10px; margin-top: 24px; }
+  .contact-form-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 16px; padding: 40px; }
+  .contact-form-card h3 { font-family: 'Cinzel', serif; font-size: 1.1rem; color: var(--text-primary); letter-spacing: 2px; margin-bottom: 28px; }
+  .form-textarea {
+    width: 100%; background: #1e1e1e; border: 1px solid var(--card-border);
+    color: var(--text-primary); padding: 14px 16px; border-radius: 8px;
+    font-family: 'Raleway', sans-serif; font-size: 0.9rem;
+    transition: var(--transition); outline: none; resize: vertical; min-height: 130px;
+  }
+  .form-textarea:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201,168,76,0.1); }
+  .form-select {
+    width: 100%; background: #1e1e1e; border: 1px solid var(--card-border);
+    color: var(--text-primary); padding: 12px 16px; border-radius: 8px;
+    font-family: 'Raleway', sans-serif; font-size: 0.9rem; cursor: pointer; outline: none;
+  }
+  .form-select:focus { border-color: var(--gold); }
+
+  /* ═══════════════════════════════════════════
+     PRODUCT DETAIL MODAL
+  ═══════════════════════════════════════════ */
+  #product-modal {
+    position: fixed; inset: 0; z-index: 3000;
+    display: flex; align-items: center; justify-content: center;
+    padding: 20px; opacity: 0; visibility: hidden; transition: var(--transition);
+    background: rgba(0,0,0,0.85); backdrop-filter: blur(10px);
+  }
+  #product-modal.open { opacity: 1; visibility: visible; }
+  .modal-card {
+    background: #141414; border: 1px solid rgba(201,168,76,0.3);
+    border-radius: 20px; max-width: 800px; width: 100%;
+    max-height: 90vh; overflow-y: auto;
+    display: grid; grid-template-columns: 1fr 1fr;
+    transform: scale(0.9); transition: transform 0.4s ease;
+    position: relative;
+  }
+  #product-modal.open .modal-card { transform: scale(1); }
+  .modal-close {
+    position: absolute; top: 16px; right: 16px;
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(255,255,255,0.1); border: none;
+    color: var(--text-primary); cursor: pointer; font-size: 1rem;
+    display: flex; align-items: center; justify-content: center;
+    transition: var(--transition); z-index: 1;
+  }
+  .modal-close:hover { background: rgba(201,168,76,0.2); color: var(--gold); }
+  .modal-img { background: linear-gradient(135deg, #1e1e1e, #252525); display: flex; align-items: center; justify-content: center; font-size: 7rem; min-height: 300px; border-radius: 20px 0 0 20px; }
+  .modal-info { padding: 35px; }
+  .modal-cat { font-size: 0.68rem; color: var(--gold); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px; }
+  .modal-name { font-family: 'Cinzel', serif; font-size: 1.5rem; color: var(--text-primary); margin-bottom: 14px; line-height: 1.3; }
+  .modal-price { font-family: 'Cinzel', serif; font-size: 2rem; color: var(--gold); font-weight: 700; margin-bottom: 20px; }
+  .modal-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.7; margin-bottom: 24px; }
+  .modal-specs { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+  .modal-spec { background: rgba(201,168,76,0.05); border: 1px solid rgba(201,168,76,0.15); padding: 10px 14px; border-radius: 8px; }
+  .modal-spec-label { font-size: 0.65rem; color: var(--text-muted); letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 4px; }
+  .modal-spec-val { font-size: 0.88rem; color: var(--text-primary); font-weight: 500; }
+  .modal-actions { display: flex; gap: 12px; }
+
+  /* ═══════════════════════════════════════════
+     RESPONSIVE
+  ═══════════════════════════════════════════ */
+  @media (max-width: 1024px) {
+    .footer-grid { grid-template-columns: 1fr 1fr; }
+    .shop-layout { grid-template-columns: 1fr; }
+    .shop-sidebar { position: static; }
+    .jewelry-grid { grid-template-columns: 1fr; }
+    .payment-container { grid-template-columns: 1fr; }
+    .modal-card { grid-template-columns: 1fr; }
+    .modal-img { border-radius: 20px 20px 0 0; min-height: 200px; font-size: 5rem; }
+    .contact-layout { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 768px) {
+    #navbar { padding: 0 20px; }
+    .nav-links, .nav-actions .btn-signin { display: none; }
+    .hamburger { display: flex; }
+    #mobile-nav { display: block; }
+    .nav-actions { gap: 5px; }
+    .stats-inner { grid-template-columns: 1fr 1fr; }
+    .py-100 { padding: 60px 20px; }
+    .py-80 { padding: 50px 20px; }
+    .footer-grid { grid-template-columns: 1fr; gap: 30px; }
+    .footer-bottom { flex-direction: column; text-align: center; }
+    .shop-layout { padding: 30px 20px; }
+    .payment-page { padding: 100px 20px 60px; }
+    .contact-layout { padding: 40px 20px; }
+    .auth-card { padding: 35px 25px; }
+    .jewelry-card { flex-direction: column; }
+    .jewelry-img { width: 100%; min-height: 160px; }
+    .gems-grid { grid-template-columns: 1fr; }
+    #cart-sidebar { width: 100%; max-width: 100%; }
+    .filter-bar { gap: 8px; }
+    .filter-btn { padding: 8px 16px; font-size: 0.68rem; }
+  }
+  @media (max-width: 480px) {
+    .hero-actions { flex-direction: column; align-items: center; }
+    .cat-grid { grid-template-columns: repeat(3,1fr); }
+    .stats-inner { grid-template-columns: 1fr 1fr; gap: 15px; }
+    .form-row { grid-template-columns: 1fr; }
+    .modal-specs { grid-template-columns: 1fr; }
+    .modal-actions { flex-direction: column; }
+  }
+
+  /* Animations */
+  .fade-in { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+  .stagger-1 { transition-delay: 0.1s; }
+  .stagger-2 { transition-delay: 0.2s; }
+  .stagger-3 { transition-delay: 0.3s; }
+  .stagger-4 { transition-delay: 0.4s; }
+</style>
+</head>
+<body>
+
+<!-- ═══════════ LOADER ═══════════ -->
+<div id="loader">
+  <svg class="loader-gem" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+    <polygon points="50,5 95,35 95,65 50,95 5,65 5,35" fill="none" stroke="#C9A84C" stroke-width="2"/>
+    <polygon points="50,5 95,35 50,50" fill="rgba(201,168,76,0.3)"/>
+    <polygon points="50,5 5,35 50,50" fill="rgba(201,168,76,0.2)"/>
+    <polygon points="95,35 50,50 95,65" fill="rgba(201,168,76,0.25)"/>
+    <polygon points="5,35 50,50 5,65" fill="rgba(201,168,76,0.2)"/>
+    <polygon points="50,95 95,65 50,50" fill="rgba(201,168,76,0.35)"/>
+    <polygon points="50,95 5,65 50,50" fill="rgba(201,168,76,0.3)"/>
+    <circle cx="50" cy="50" r="3" fill="#FFE566"/>
+  </svg>
+  <div class="loader-text">ZURICHOICE</div>
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+</div>
+
+<!-- ═══════════ TOAST ═══════════ -->
+<div id="toast"><i class="fas fa-gem"></i><span id="toast-msg">Item added to cart</span></div>
+
+<!-- ═══════════ PARTICLES ═══════════ -->
+<div id="particles"></div>
+
+<!-- ═══════════ NAVBAR ═══════════ -->
+<nav id="navbar">
+  <div class="nav-inner">
+    <a class="nav-logo" href="#" onclick="showPage('home')">
+      <svg class="logo-gem-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="30" cy="30" rx="28" ry="18" fill="none" stroke="#C9A84C" stroke-width="1.5"/>
+        <polygon points="30,8 50,22 50,38 30,52 10,38 10,22" fill="none" stroke="#C9A84C" stroke-width="1.5"/>
+        <polygon points="30,8 50,22 30,30" fill="rgba(201,168,76,0.3)"/>
+        <polygon points="30,8 10,22 30,30" fill="rgba(201,168,76,0.2)"/>
+        <polygon points="30,52 50,38 30,30" fill="rgba(201,168,76,0.35)"/>
+        <polygon points="30,52 10,38 30,30" fill="rgba(201,168,76,0.25)"/>
+        <circle cx="30" cy="30" r="2.5" fill="#FFE566"/>
+      </svg>
+      <div class="logo-text">
+        <span class="logo-main">ZURICHOICE</span>
+        <span class="logo-sub">Gems &amp; Jewels</span>
+      </div>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#" onclick="showPage('home')">Home</a></li>
+      <li class="has-dropdown">
+        <a href="#" onclick="showPage('shop')">Collections ▾</a>
+        <div class="dropdown-menu">
+          <a href="#" onclick="filterShop('Ruby')"><div class="gem-dot" style="background:#9B2335"></div> Rubies</a>
+          <a href="#" onclick="filterShop('Sapphire')"><div class="gem-dot" style="background:#1B3A8A"></div> Sapphires</a>
+          <a href="#" onclick="filterShop('Emerald')"><div class="gem-dot" style="background:#1B6B3A"></div> Emeralds</a>
+          <a href="#" onclick="filterShop('Amethyst')"><div class="gem-dot" style="background:#6B2D8B"></div> Amethysts</a>
+          <a href="#" onclick="filterShop('Topaz')"><div class="gem-dot" style="background:#C4820A"></div> Topaz</a>
+          <a href="#" onclick="filterShop('Diamond')"><div class="gem-dot" style="background:#B9D0E8"></div> Diamonds</a>
+          <a href="#" onclick="filterShop('All')"><i class="fas fa-th" style="color:var(--gold)"></i> All Gems</a>
+        </div>
+      </li>
+      <li class="has-dropdown">
+        <a href="#" onclick="showPage('shop')">Jewelry ▾</a>
+        <div class="dropdown-menu">
+          <a href="#"><i class="fas fa-ring" style="color:var(--gold)"></i> Rings</a>
+          <a href="#"><i class="fas fa-gem" style="color:var(--gold)"></i> Pendants</a>
+          <a href="#"><i class="fas fa-star" style="color:var(--gold)"></i> Earrings</a>
+          <a href="#"><i class="fas fa-palette" style="color:var(--gold)"></i> Custom Design</a>
+        </div>
+      </li>
+      <li><a href="#" onclick="showPage('contact')">Contact</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <button class="nav-btn" onclick="toggleCart()"><i class="fas fa-shopping-bag"></i><span class="cart-badge" id="cart-count">0</span></button>
+      <button class="nav-btn" id="user-nav-btn" onclick="showPage('signin')"><i class="fas fa-user"></i></button>
+      <button class="btn-signin" onclick="showPage('signin')" id="signin-nav-btn">Sign In</button>
+      <button class="hamburger" id="hamburger" onclick="toggleMobileNav()">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════ MOBILE NAV ═══════════ -->
+<div id="mobile-nav">
+  <a class="mobile-nav-link" href="#" onclick="showPage('home');toggleMobileNav()">🏠 Home</a>
+  <a class="mobile-nav-link" href="#" onclick="showPage('shop');toggleMobileNav()">💎 Shop All</a>
+  <a class="mobile-nav-link" href="#" onclick="showPage('contact');toggleMobileNav()">📩 Contact</a>
+  <div class="mobile-nav-section">Gem Categories</div>
+  <a class="mobile-cat-link" href="#" onclick="filterShop('Ruby');toggleMobileNav()"><span style="color:#9B2335">●</span> Rubies</a>
+  <a class="mobile-cat-link" href="#" onclick="filterShop('Sapphire');toggleMobileNav()"><span style="color:#1B3A8A">●</span> Sapphires</a>
+  <a class="mobile-cat-link" href="#" onclick="filterShop('Emerald');toggleMobileNav()"><span style="color:#1B6B3A">●</span> Emeralds</a>
+  <a class="mobile-cat-link" href="#" onclick="filterShop('Amethyst');toggleMobileNav()"><span style="color:#6B2D8B">●</span> Amethysts</a>
+  <a class="mobile-cat-link" href="#" onclick="filterShop('Topaz');toggleMobileNav()"><span style="color:#C4820A">●</span> Topaz</a>
+  <a class="mobile-cat-link" href="#" onclick="filterShop('Diamond');toggleMobileNav()"><span style="color:#B9D0E8">●</span> Diamonds</a>
+  <div class="mobile-nav-section">Jewelry</div>
+  <a class="mobile-cat-link" href="#">💍 Rings</a>
+  <a class="mobile-cat-link" href="#">✨ Pendants</a>
+  <a class="mobile-cat-link" href="#">💎 Earrings</a>
+  <a class="mobile-cat-link" href="#">🎨 Custom Design</a>
+  <div style="margin-top:30px; padding-top:20px; border-top:1px solid rgba(201,168,76,0.15); display:flex; gap:10px;">
+    <button class="btn-primary" style="flex:1;padding:13px" onclick="showPage('signin');toggleMobileNav()">Sign In</button>
+  </div>
+</div>
+
+<!-- ═══════════ CART SIDEBAR ═══════════ -->
+<div id="cart-overlay" onclick="toggleCart()"></div>
+<div id="cart-sidebar">
+  <div class="cart-header">
+    <h3>YOUR BAG <span id="cart-item-count" style="color:var(--gold);font-size:0.8rem"></span></h3>
+    <button class="cart-close" onclick="toggleCart()"><i class="fas fa-times"></i></button>
+  </div>
+  <div class="cart-items" id="cart-items-container">
+    <div class="cart-empty">
+      <i class="fas fa-shopping-bag"></i>
+      <p>Your bag is empty</p>
+      <span style="font-size:0.8rem;color:var(--text-muted)">Add some precious gems to get started</span>
+    </div>
+  </div>
+  <div class="cart-footer" id="cart-footer" style="display:none">
+    <div class="cart-subtotal">
+      <span>Subtotal</span>
+      <strong id="cart-subtotal">$0.00</strong>
+    </div>
+    <div class="cart-subtotal">
+      <span>Shipping</span>
+      <strong style="color:var(--text-muted)">Calculated at checkout</strong>
+    </div>
+    <div class="cart-divider"></div>
+    <div class="cart-total">
+      <span>TOTAL</span>
+      <strong id="cart-total">$0.00</strong>
+    </div>
+    <button class="btn-checkout" onclick="toggleCart();showPage('payment')">PROCEED TO CHECKOUT →</button>
+  </div>
+</div>
+
+<!-- ═══════════ PRODUCT MODAL ═══════════ -->
+<div id="product-modal">
+  <div class="modal-card">
+    <button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button>
+    <div class="modal-img" id="modal-img"></div>
+    <div class="modal-info">
+      <div class="modal-cat" id="modal-cat"></div>
+      <div class="modal-name" id="modal-name"></div>
+      <div class="modal-price" id="modal-price"></div>
+      <div class="modal-desc" id="modal-desc"></div>
+      <div class="modal-specs" id="modal-specs"></div>
+      <div class="modal-actions">
+        <button class="btn-primary" id="modal-add-btn" onclick="addToCartFromModal()" style="flex:1;padding:14px">ADD TO BAG</button>
+        <button class="btn-outline" onclick="closeModal()" style="padding:14px 20px">CLOSE</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PAGE: HOME
+══════════════════════════════════════════════════════ -->
+<div id="page-home" class="page active">
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-gems-floating">
+      <div class="float-gem" style="left:8%;top:25%;animation-duration:6s;animation-delay:0s">💎</div>
+      <div class="float-gem" style="left:90%;top:30%;animation-duration:8s;animation-delay:1s">🔴</div>
+      <div class="float-gem" style="left:15%;top:65%;animation-duration:7s;animation-delay:2s">💜</div>
+      <div class="float-gem" style="left:82%;top:70%;animation-duration:5s;animation-delay:0.5s">💚</div>
+      <div class="float-gem" style="left:50%;top:15%;animation-duration:9s;animation-delay:1.5s">⭐</div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <i class="fas fa-gem"></i>
+        Ethically Sourced · Galle, Sri Lanka
+      </div>
+      <h1 class="hero-title">ZURICHOICE</h1>
+      <div class="hero-sub">Gems &amp; Jewels</div>
+      <p class="hero-desc">Discover the world's most extraordinary gemstones and handcrafted jewelry. Each piece is ethically sourced from the heart of Sri Lanka — where nature's finest treasures meet artisan craftsmanship.</p>
+      <div class="hero-actions">
+        <a href="#" class="btn-primary" onclick="showPage('shop')">EXPLORE COLLECTION</a>
+        <a href="#" class="btn-outline" onclick="showPage('contact')">CUSTOM DESIGN</a>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <span>Discover</span>
+      <i class="fas fa-chevron-down"></i>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stats-inner">
+      <div class="stat-item fade-in stagger-1">
+        <span class="stat-num" data-count="500">0</span>
+        <span class="stat-label">Gemstone Varieties</span>
+      </div>
+      <div class="stat-item fade-in stagger-2">
+        <span class="stat-num" data-count="1200">0</span>
+        <span class="stat-label">Happy Customers</span>
+      </div>
+      <div class="stat-item fade-in stagger-3">
+        <span class="stat-num">15+</span>
+        <span class="stat-label">Years Experience</span>
+      </div>
+      <div class="stat-item fade-in stagger-4">
+        <span class="stat-num">100%</span>
+        <span class="stat-label">Ethically Sourced</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CATEGORIES -->
+  <section class="categories-section py-100">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Browse By</span>
+        <h2 class="section-title">Gem Categories</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="cat-grid">
+        <div class="cat-card fade-in" onclick="filterShop('Ruby')">
+          <div class="cat-icon" style="border-color:rgba(155,35,53,0.4);background:rgba(155,35,53,0.1)">🔴</div>
+          <div class="cat-name">Rubies</div>
+          <div class="cat-count">12 pieces</div>
+        </div>
+        <div class="cat-card fade-in stagger-1" onclick="filterShop('Sapphire')">
+          <div class="cat-icon" style="border-color:rgba(27,58,138,0.4);background:rgba(27,58,138,0.1)">🔵</div>
+          <div class="cat-name">Sapphires</div>
+          <div class="cat-count">18 pieces</div>
+        </div>
+        <div class="cat-card fade-in stagger-2" onclick="filterShop('Emerald')">
+          <div class="cat-icon" style="border-color:rgba(27,107,58,0.4);background:rgba(27,107,58,0.1)">💚</div>
+          <div class="cat-name">Emeralds</div>
+          <div class="cat-count">9 pieces</div>
+        </div>
+        <div class="cat-card fade-in stagger-3" onclick="filterShop('Amethyst')">
+          <div class="cat-icon" style="border-color:rgba(107,45,139,0.4);background:rgba(107,45,139,0.1)">💜</div>
+          <div class="cat-name">Amethysts</div>
+          <div class="cat-count">14 pieces</div>
+        </div>
+        <div class="cat-card fade-in stagger-4" onclick="filterShop('Topaz')">
+          <div class="cat-icon" style="border-color:rgba(196,130,10,0.4);background:rgba(196,130,10,0.1)">🟡</div>
+          <div class="cat-name">Topaz</div>
+          <div class="cat-count">11 pieces</div>
+        </div>
+        <div class="cat-card fade-in" onclick="filterShop('Diamond')">
+          <div class="cat-icon" style="border-color:rgba(185,208,232,0.4);background:rgba(185,208,232,0.1)">💎</div>
+          <div class="cat-name">Diamonds</div>
+          <div class="cat-count">7 pieces</div>
+        </div>
+        <div class="cat-card fade-in stagger-1" onclick="filterShop('All')">
+          <div class="cat-icon">💍</div>
+          <div class="cat-name">Rings</div>
+          <div class="cat-count">25 pieces</div>
+        </div>
+        <div class="cat-card fade-in stagger-2" onclick="filterShop('All')">
+          <div class="cat-icon">✨</div>
+          <div class="cat-name">Pendants</div>
+          <div class="cat-count">20 pieces</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED GEMS -->
+  <section class="featured-section py-100">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Hand Picked</span>
+        <h2 class="section-title">Featured Gems</h2>
+        <div class="section-divider"></div>
+        <p class="section-desc">Each gem is individually examined for quality, colour, and origin authenticity.</p>
+      </div>
+      <div class="filter-bar">
+        <button class="filter-btn active" onclick="filterHome(this,'All')">All</button>
+        <button class="filter-btn" onclick="filterHome(this,'Ruby')">Ruby</button>
+        <button class="filter-btn" onclick="filterHome(this,'Sapphire')">Sapphire</button>
+        <button class="filter-btn" onclick="filterHome(this,'Emerald')">Emerald</button>
+        <button class="filter-btn" onclick="filterHome(this,'Amethyst')">Amethyst</button>
+        <button class="filter-btn" onclick="filterHome(this,'Diamond')">Diamond</button>
+      </div>
+      <div class="gems-grid" id="home-gems-grid"></div>
+      <div style="text-align:center;margin-top:50px">
+        <a href="#" class="btn-outline" onclick="showPage('shop')">VIEW ALL COLLECTION →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- JEWELRY SECTION -->
+  <section class="jewelry-section py-100">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Artisan Crafted</span>
+        <h2 class="section-title">Bespoke Jewelry</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="jewelry-grid">
+        <div class="jewelry-card fade-in">
+          <div class="jewelry-img">💍</div>
+          <div class="jewelry-info">
+            <div class="jewelry-cat">Custom Ring</div>
+            <div class="jewelry-name">Royal Ruby Solitaire Ring</div>
+            <div class="jewelry-desc">18K gold band with an exquisite 2ct Burmese ruby, handset by master craftsmen in Galle.</div>
+            <div class="jewelry-price">$1,280</div>
+            <button class="btn-jewelry" onclick="addToCartDirect({emoji:'💍',name:'Royal Ruby Solitaire Ring',price:1280,category:'Ring'})">ADD TO BAG</button>
+          </div>
+        </div>
+        <div class="jewelry-card fade-in stagger-1">
+          <div class="jewelry-img">📿</div>
+          <div class="jewelry-info">
+            <div class="jewelry-cat">Pendant</div>
+            <div class="jewelry-name">Ceylon Sapphire Drop Pendant</div>
+            <div class="jewelry-desc">Natural blue sapphire pendant with diamond halo in white gold — a timeless statement piece.</div>
+            <div class="jewelry-price">$950</div>
+            <button class="btn-jewelry" onclick="addToCartDirect({emoji:'📿',name:'Ceylon Sapphire Drop Pendant',price:950,category:'Pendant'})">ADD TO BAG</button>
+          </div>
+        </div>
+        <div class="jewelry-card fade-in stagger-2">
+          <div class="jewelry-img">✨</div>
+          <div class="jewelry-info">
+            <div class="jewelry-cat">Earrings</div>
+            <div class="jewelry-name">Emerald &amp; Diamond Studs</div>
+            <div class="jewelry-desc">Vivid Colombian emerald studs framed in brilliant-cut diamonds, set in 18K yellow gold.</div>
+            <div class="jewelry-price">$720</div>
+            <button class="btn-jewelry" onclick="addToCartDirect({emoji:'✨',name:'Emerald & Diamond Studs',price:720,category:'Earrings'})">ADD TO BAG</button>
+          </div>
+        </div>
+        <div class="jewelry-card fade-in stagger-3">
+          <div class="jewelry-img">🔮</div>
+          <div class="jewelry-info">
+            <div class="jewelry-cat">Custom Design</div>
+            <div class="jewelry-name">Create Your Dream Piece</div>
+            <div class="jewelry-desc">Work with our master jewellers to design a completely bespoke piece featuring the gemstone of your choice.</div>
+            <div class="jewelry-price">From $400</div>
+            <button class="btn-jewelry" onclick="showPage('contact')">GET STARTED</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROMO -->
+  <div class="promo-section">
+    <div style="position:relative;z-index:1">
+      <span style="font-size:3rem;display:block;margin-bottom:16px">💎</span>
+      <h2>Free Shipping on Orders Over $500</h2>
+      <p>Worldwide delivery with full insurance and elegant gift packaging included</p>
+      <a href="#" class="btn-primary" onclick="showPage('shop')">SHOP NOW</a>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials-section py-100">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Client Stories</span>
+        <h2 class="section-title">What Our Clients Say</h2>
+        <div class="section-divider"></div>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card fade-in">
+          <div class="test-stars">★★★★★</div>
+          <div class="test-text">"The sapphire I purchased from Zurichoice was breathtaking — vivid colour, exceptional clarity. The team's knowledge and passion for gems truly shines through."</div>
+          <div class="test-author">
+            <div class="test-avatar">AM</div>
+            <div>
+              <div class="test-name">Amara Mensah</div>
+              <div class="test-location">London, UK</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-in stagger-1">
+          <div class="test-stars">★★★★★</div>
+          <div class="test-text">"My custom ring was crafted with extraordinary attention to detail. The ruby they selected was beyond what I imagined. Truly a once-in-a-lifetime experience."</div>
+          <div class="test-author">
+            <div class="test-avatar">KL</div>
+            <div>
+              <div class="test-name">Kenji Lim</div>
+              <div class="test-location">Singapore</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card fade-in stagger-2">
+          <div class="test-stars">★★★★★</div>
+          <div class="test-text">"Shopping online for precious gems requires trust. Zurichoice exceeded every expectation — the certificate of authenticity, beautiful packaging, fast delivery. Perfection."</div>
+          <div class="test-author">
+            <div class="test-avatar">SV</div>
+            <div>
+              <div class="test-name">Sofia Vasquez</div>
+              <div class="test-location">Madrid, Spain</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a class="nav-logo" href="#" onclick="showPage('home')" style="display:inline-flex;margin-bottom:5px">
+            <svg width="38" height="38" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><polygon points="30,8 50,22 50,38 30,52 10,38 10,22" fill="none" stroke="#C9A84C" stroke-width="1.5"/><polygon points="30,8 50,22 30,30" fill="rgba(201,168,76,0.3)"/><polygon points="30,8 10,22 30,30" fill="rgba(201,168,76,0.2)"/><polygon points="30,52 50,38 30,30" fill="rgba(201,168,76,0.35)"/><polygon points="30,52 10,38 30,30" fill="rgba(201,168,76,0.25)"/><circle cx="30" cy="30" r="2.5" fill="#FFE566"/></svg>
+            <div class="logo-text" style="margin-left:10px">
+              <span class="logo-main" style="font-size:1.1rem">ZURICHOICE</span>
+              <span class="logo-sub">Gems &amp; Jewels</span>
+            </div>
+          </a>
+          <p>Luxury gemstones and bespoke jewelry from the heart of Galle, Sri Lanka. Each piece tells a story of earth, craftsmanship, and timeless beauty.</p>
+          <div class="footer-socials">
+            <a class="social-btn" href="#"><i class="fab fa-instagram"></i></a>
+            <a class="social-btn" href="#"><i class="fab fa-tiktok"></i></a>
+            <a class="social-btn" href="#"><i class="fab fa-facebook-f"></i></a>
+            <a class="social-btn" href="#"><i class="fab fa-whatsapp"></i></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Collections</h4>
+          <ul class="footer-links">
+            <li><a href="#" onclick="filterShop('Ruby')">Rubies</a></li>
+            <li><a href="#" onclick="filterShop('Sapphire')">Sapphires</a></li>
+            <li><a href="#" onclick="filterShop('Emerald')">Emeralds</a></li>
+            <li><a href="#" onclick="filterShop('Amethyst')">Amethysts</a></li>
+            <li><a href="#" onclick="filterShop('Diamond')">Diamonds</a></li>
+            <li><a href="#" onclick="filterShop('Topaz')">Topaz</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Jewelry</h4>
+          <ul class="footer-links">
+            <li><a href="#">Custom Rings</a></li>
+            <li><a href="#">Pendants</a></li>
+            <li><a href="#">Earrings</a></li>
+            <li><a href="#">Bracelets</a></li>
+            <li><a href="#">Custom Design</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Help</h4>
+          <ul class="footer-links">
+            <li><a href="#" onclick="showPage('contact')">Contact Us</a></li>
+            <li><a href="#">Shipping Policy</a></li>
+            <li><a href="#">Returns</a></li>
+            <li><a href="#">Authenticity</a></li>
+            <li><a href="#">Care Guide</a></li>
+            <li><a href="#" onclick="showPage('signin')">My Account</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copy">© 2025 Zurichoice Gems &amp; Jewels. All rights reserved. | Galle, Southern Province, Sri Lanka</div>
+        <div class="footer-pay">
+          <span class="pay-icon">VISA</span>
+          <span class="pay-icon">MC</span>
+          <span class="pay-icon">AMEX</span>
+          <span class="pay-icon">PAYPAL</span>
+          <span class="pay-icon">CRYPTO</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PAGE: SHOP
+══════════════════════════════════════════════════════ -->
+<div id="page-shop" class="page">
+  <div class="page-hero">
+    <div class="breadcrumb">
+      <span onclick="showPage('home')">Home</span> / <span>Shop</span>
+    </div>
+    <h1>Our Collection</h1>
+    <p>Rare & precious gems from the finest mines of Sri Lanka and beyond</p>
+  </div>
+  <div class="shop-layout">
+    <!-- Sidebar -->
+    <aside class="shop-sidebar">
+      <div class="sidebar-card">
+        <div class="sidebar-title">Filter <span class="sidebar-clear" onclick="clearFilters()">Clear All</span></div>
+        <div style="margin-bottom:16px;font-size:0.72rem;color:var(--text-muted);letter-spacing:1.5px;text-transform:uppercase;margin-bottom:12px">GEM TYPE</div>
+        <div class="filter-group"><label><input type="checkbox" value="Ruby" onchange="applyFilters()"> Ruby</label></div>
+        <div class="filter-group"><label><input type="checkbox" value="Sapphire" onchange="applyFilters()"> Sapphire</label></div>
+        <div class="filter-group"><label><input type="checkbox" value="Emerald" onchange="applyFilters()"> Emerald</label></div>
+        <div class="filter-group"><label><input type="checkbox" value="Amethyst" onchange="applyFilters()"> Amethyst</label></div>
+        <div class="filter-group"><label><input type="checkbox" value="Diamond" onchange="applyFilters()"> Diamond</label></div>
+        <div class="filter-group"><label><input type="checkbox" value="Topaz" onchange="applyFilters()"> Topaz</label></div>
+      </div>
+      <div class="sidebar-card">
+        <div class="sidebar-title">Price Range</div>
+        <input type="range" class="price-range" min="0" max="10000" value="10000" oninput="updatePriceRange(this.value)">
+        <div class="price-values"><span>$0</span><span id="price-max-label">$10,000</span></div>
+      </div>
+      <div class="sidebar-card">
+        <div class="sidebar-title">Origin</div>
+        <div class="filter-group"><label><input type="checkbox" onchange="applyFilters()"> Sri Lanka</label></div>
+        <div class="filter-group"><label><input type="checkbox" onchange="applyFilters()"> Burma</label></div>
+        <div class="filter-group"><label><input type="checkbox" onchange="applyFilters()"> Colombia</label></div>
+        <div class="filter-group"><label><input type="checkbox" onchange="applyFilters()"> South Africa</label></div>
+      </div>
+    </aside>
+    <!-- Main -->
+    <div>
+      <div class="shop-main-header">
+        <div class="results-count" id="shop-results-count"><strong>0</strong> gems found</div>
+        <select class="sort-select" onchange="sortGems(this.value)">
+          <option value="default">Sort: Featured</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="name-asc">Name: A-Z</option>
+        </select>
+      </div>
+      <div class="gems-grid" id="shop-gems-grid"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PAGE: PAYMENT
+══════════════════════════════════════════════════════ -->
+<div id="page-payment" class="page">
+  <div class="payment-page">
+    <div class="breadcrumb" style="justify-content:flex-start;max-width:1000px;margin:0 auto 30px">
+      <span onclick="showPage('home')">Home</span> / <span onclick="toggleCart()">Cart</span> / <span>Checkout</span>
+    </div>
+    <div class="payment-container">
+      <!-- Order Summary -->
+      <div class="payment-summary">
+        <h3>ORDER SUMMARY</h3>
+        <div id="payment-order-items"></div>
+        <div style="margin-top:20px">
+          <div class="order-total-row"><span>Subtotal</span><span id="pay-sub">$0.00</span></div>
+          <div class="order-total-row"><span>Shipping</span><span>$25.00</span></div>
+          <div class="order-total-row"><span>Insurance</span><span>Included</span></div>
+          <div class="order-total-row grand"><span>TOTAL</span><span id="pay-total">$0.00</span></div>
+        </div>
+      </div>
+      <!-- Payment Form -->
+      <div>
+        <!-- Shipping -->
+        <div class="payment-form-card" style="margin-bottom:20px">
+          <h3>SHIPPING DETAILS</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">First Name</label>
+              <input type="text" class="form-input" placeholder="Amara">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Last Name</label>
+              <input type="text" class="form-input" placeholder="Silva">
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email Address</label>
+            <input type="email" class="form-input" placeholder="email@example.com">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Address</label>
+            <input type="text" class="form-input" placeholder="Street address">
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">City</label>
+              <input type="text" class="form-input" placeholder="City">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Country</label>
+              <input type="text" class="form-input" placeholder="Country">
+            </div>
+          </div>
+        </div>
+        <!-- Payment -->
+        <div class="payment-form-card">
+          <h3>PAYMENT METHOD</h3>
+          <div class="form-tabs">
+            <button class="form-tab active" onclick="switchPayTab(this,'card')">💳 Credit Card</button>
+            <button class="form-tab" onclick="switchPayTab(this,'paypal')">🅿 PayPal</button>
+            <button class="form-tab" onclick="switchPayTab(this,'crypto')">₿ Crypto</button>
+          </div>
+          <div id="pay-card">
+            <div class="card-icons">
+              <span class="card-icon">VISA</span>
+              <span class="card-icon">MC</span>
+              <span class="card-icon">AMEX</span>
+            </div>
+            <div class="secure-badge"><i class="fas fa-lock"></i> Secured with 256-bit SSL Encryption</div>
+            <div class="form-group">
+              <label class="form-label">Card Number</label>
+              <input type="text" class="form-input" placeholder="1234 5678 9012 3456" maxlength="19" oninput="formatCardNum(this)">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Cardholder Name</label>
+              <input type="text" class="form-input" placeholder="Name on card">
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label class="form-label">Expiry Date</label>
+                <input type="text" class="form-input" placeholder="MM / YY" maxlength="7" oninput="formatExpiry(this)">
+              </div>
+              <div class="form-group">
+                <label class="form-label">CVC</label>
+                <input type="text" class="form-input" placeholder="•••" maxlength="4">
+              </div>
+            </div>
+          </div>
+          <div id="pay-paypal" style="display:none;text-align:center;padding:30px">
+            <div style="font-size:3rem;margin-bottom:16px">🅿</div>
+            <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:20px">You will be redirected to PayPal to complete your purchase securely.</p>
+          </div>
+          <div id="pay-crypto" style="display:none;text-align:center;padding:30px">
+            <div style="font-size:3rem;margin-bottom:16px">₿</div>
+            <p style="color:var(--text-muted);font-size:0.9rem;margin-bottom:12px">We accept: BTC · ETH · USDT · BNB</p>
+            <div style="background:#1e1e1e;border:1px solid rgba(201,168,76,0.2);padding:16px;border-radius:8px;font-size:0.82rem;color:var(--gold)">Your wallet address will be generated at order confirmation</div>
+          </div>
+          <button class="btn-checkout" style="margin-top:24px" onclick="placeOrder()">PLACE ORDER &amp; PAY →</button>
+          <p style="text-align:center;font-size:0.75rem;color:var(--text-muted);margin-top:14px"><i class="fas fa-shield-alt" style="color:var(--gold)"></i> Your information is secure and encrypted. We never store card details.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PAGE: SIGNIN
+══════════════════════════════════════════════════════ -->
+<div id="page-signin" class="page">
+  <div class="auth-page">
+    <div class="auth-card">
+      <div class="auth-logo">
+        <svg class="logo-gem-icon" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><polygon points="30,8 50,22 50,38 30,52 10,38 10,22" fill="none" stroke="#C9A84C" stroke-width="1.5"/><polygon points="30,8 50,22 30,30" fill="rgba(201,168,76,0.3)"/><polygon points="30,8 10,22 30,30" fill="rgba(201,168,76,0.2)"/><polygon points="30,52 50,38 30,30" fill="rgba(201,168,76,0.35)"/><polygon points="30,52 10,38 30,30" fill="rgba(201,168,76,0.25)"/><circle cx="30" cy="30" r="2.5" fill="#FFE566"/></svg>
+        <h2>ZURICHOICE</h2>
+        <p style="font-size:0.78rem;color:var(--text-muted);margin-top:6px;letter-spacing:2px">GEMS &amp; JEWELS</p>
+      </div>
+      <div class="auth-tabs">
+        <button class="auth-tab active" onclick="switchAuthTab('login')">Sign In</button>
+        <button class="auth-tab" onclick="switchAuthTab('register')">Create Account</button>
+      </div>
+
+      <!-- LOGIN -->
+      <div class="auth-form active" id="auth-login">
+        <div class="social-auth">
+          <button class="social-auth-btn"><i class="fab fa-google"></i> Google</button>
+          <button class="social-auth-btn"><i class="fab fa-facebook-f"></i> Facebook</button>
+        </div>
+        <div class="form-divider"><span>or sign in with email</span></div>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" class="form-input" placeholder="your@email.com" id="login-email">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input type="password" class="form-input" placeholder="••••••••" id="login-pass">
+        </div>
+        <div style="text-align:right;margin:-8px 0 18px">
+          <a style="font-size:0.78rem;color:var(--gold);cursor:pointer">Forgot password?</a>
+        </div>
+        <button class="btn-checkout" onclick="handleLogin()">SIGN IN</button>
+        <div class="auth-footer-text">Don't have an account? <a onclick="switchAuthTab('register')">Create one →</a></div>
+      </div>
+
+      <!-- REGISTER -->
+      <div class="auth-form" id="auth-register">
+        <div class="form-row">
+          <div class="form-group">
+            <label class="form-label">First Name</label>
+            <input type="text" class="form-input" placeholder="Amara">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Last Name</label>
+            <input type="text" class="form-input" placeholder="Silva">
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" class="form-input" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Password</label>
+          <input type="password" class="form-input" placeholder="Min. 8 characters">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Confirm Password</label>
+          <input type="password" class="form-input" placeholder="Repeat password">
+        </div>
+        <div style="display:flex;align-items:flex-start;gap:10px;margin-bottom:20px">
+          <input type="checkbox" style="margin-top:3px;accent-color:var(--gold)">
+          <span style="font-size:0.8rem;color:var(--text-muted)">I agree to the <a style="color:var(--gold);cursor:pointer">Terms of Service</a> and <a style="color:var(--gold);cursor:pointer">Privacy Policy</a></span>
+        </div>
+        <button class="btn-checkout" onclick="handleRegister()">CREATE ACCOUNT</button>
+        <div class="auth-footer-text">Already have an account? <a onclick="switchAuthTab('login')">Sign in →</a></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     PAGE: CONTACT
+══════════════════════════════════════════════════════ -->
+<div id="page-contact" class="page">
+  <div class="page-hero">
+    <div class="breadcrumb"><span onclick="showPage('home')">Home</span> / <span>Contact</span></div>
+    <h1>Get In Touch</h1>
+    <p>We'd love to hear from you — whether it's a question, custom order or just to say hello</p>
+  </div>
+  <div class="contact-layout">
+    <div class="contact-info">
+      <h2>Let's Create Something Beautiful Together</h2>
+      <p>Our team of gem experts and master craftsmen are ready to help you find your perfect piece or create a bespoke design that tells your story.</p>
+      <div class="contact-detail">
+        <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+        <div class="contact-detail-text">
+          <h4>VISIT US</h4>
+          <p>Zurichoice Gems &amp; Jewels<br>Galle, Galle District<br>Southern Province, Sri Lanka</p>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+        <div class="contact-detail-text">
+          <h4>EMAIL</h4>
+          <p>info@zurichoice.com<br>orders@zurichoice.com</p>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+        <div class="contact-detail-text">
+          <h4>WHATSAPP</h4>
+          <p>+94 77 123 4567<br>Mon–Sat, 9am – 6pm IST</p>
+        </div>
+      </div>
+      <div class="contact-detail">
+        <div class="contact-icon"><i class="fas fa-clock"></i></div>
+        <div class="contact-detail-text">
+          <h4>HOURS</h4>
+          <p>Monday – Saturday: 9am – 6pm<br>Sunday: By appointment only</p>
+        </div>
+      </div>
+      <div class="contact-social">
+        <a class="social-btn" href="#"><i class="fab fa-instagram"></i></a>
+        <a class="social-btn" href="#"><i class="fab fa-tiktok"></i></a>
+        <a class="social-btn" href="#"><i class="fab fa-facebook-f"></i></a>
+        <a class="social-btn" href="#"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+    <div class="contact-form-card">
+      <h3>SEND A MESSAGE</h3>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Your Name</label>
+          <input type="text" class="form-input" placeholder="Full name">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-input" placeholder="email@example.com">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Phone (Optional)</label>
+        <input type="tel" class="form-input" placeholder="+1 234 567 8900">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Inquiry Type</label>
+        <select class="form-select">
+          <option>Purchasing a Gem</option>
+          <option>Custom Jewelry Design</option>
+          <option>Gem Certification</option>
+          <option>Wholesale Inquiry</option>
+          <option>General Question</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Budget Range (USD)</label>
+        <select class="form-select">
+          <option>Under $500</option>
+          <option>$500 – $1,000</option>
+          <option>$1,000 – $5,000</option>
+          <option>$5,000 – $15,000</option>
+          <option>$15,000+</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Message</label>
+        <textarea class="form-textarea" placeholder="Tell us about your dream piece, the gem you're looking for, or any questions you have..."></textarea>
+      </div>
+      <button class="btn-checkout" onclick="sendContact()">SEND MESSAGE →</button>
+      <p style="font-size:0.78rem;color:var(--text-muted);margin-top:16px;text-align:center">We typically respond within 24 hours · All inquiries are confidential</p>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════════════════ -->
+<script>
+// ═══════════════════════════════════════
+// DATA
+// ═══════════════════════════════════════
+const gems = [
+  { id:1, name:"Pigeon's Blood Ruby", category:"Ruby", emoji:"🔴", price:2400, lkr:"LKR 720,000", badge:"rare", origin:"Burma", carats:"3.2", clarity:"VS1", desc:"The rarest of all rubies — a stunning Burmese pigeon's blood ruby with exceptional saturation and natural fluorescence. GIA certified.", specs:{Origin:"Burma",Carats:"3.2 ct",Clarity:"VS1",Cut:"Oval",Treatment:"None",Certified:"GIA"} },
+  { id:2, name:"Ceylon Blue Sapphire", category:"Sapphire", emoji:"🔵", price:1850, lkr:"LKR 555,000", badge:"hot", origin:"Sri Lanka", carats:"4.1", clarity:"VVS2", desc:"A magnificent cornflower blue Ceylon sapphire with velvety saturation. One of the finest sapphire varieties in the world, natural and untreated.", specs:{Origin:"Sri Lanka",Carats:"4.1 ct",Clarity:"VVS2",Cut:"Cushion",Treatment:"None",Certified:"IGI"} },
+  { id:3, name:"Colombian Emerald", category:"Emerald", emoji:"💚", price:3200, lkr:"LKR 960,000", badge:"rare", origin:"Colombia", carats:"2.8", clarity:"SI1", desc:"Vivid green Colombian emerald with exceptional colour saturation and minimal inclusions. Natural growth inclusions add to its authenticity.", specs:{Origin:"Colombia",Carats:"2.8 ct",Clarity:"SI1",Cut:"Emerald",Treatment:"Minor",Certified:"GRS"} },
+  { id:4, name:"Royal Amethyst", category:"Amethyst", emoji:"💜", price:480, lkr:"LKR 144,000", badge:"new", origin:"Brazil", carats:"8.5", clarity:"VVS1", desc:"Deep Siberian-grade amethyst with rich purple hues and excellent transparency. A regal stone at an accessible price.", specs:{Origin:"Brazil",Carats:"8.5 ct",Clarity:"VVS1",Cut:"Round",Treatment:"None",Certified:"AGS"} },
+  { id:5, name:"Imperial Topaz", category:"Topaz", emoji:"🟡", price:920, lkr:"LKR 276,000", badge:"hot", origin:"Brazil", carats:"5.0", clarity:"IF", desc:"Golden imperial topaz — one of the most valuable topaz varieties — with flawless clarity and a warm orange-gold glow.", specs:{Origin:"Brazil",Carats:"5.0 ct",Clarity:"IF",Cut:"Pear",Treatment:"None",Certified:"GIA"} },
+  { id:6, name:"White Diamond D-FL", category:"Diamond", emoji:"💎", price:8500, lkr:"LKR 2,550,000", badge:"rare", origin:"South Africa", carats:"1.5", clarity:"FL", desc:"Exceptional D-colour flawless diamond of extraordinary brilliance. The pinnacle of diamond quality — completely colourless and without any inclusions.", specs:{Origin:"S. Africa",Carats:"1.5 ct",Clarity:"FL",Cut:"Round",Treatment:"None",Certified:"GIA"} },
+  { id:7, name:"Star Ruby", category:"Ruby", emoji:"🔴", price:1650, lkr:"LKR 495,000", badge:"new", origin:"Sri Lanka", carats:"6.0", clarity:"Cab", desc:"Rare asterism ruby displaying a perfect six-rayed star under light. A cabochon-cut Sri Lankan star ruby of exceptional quality.", specs:{Origin:"Sri Lanka",Carats:"6.0 ct",Clarity:"Cabochon",Cut:"Cabochon",Treatment:"None",Certified:"GRS"} },
+  { id:8, name:"Padparadscha Sapphire", category:"Sapphire", emoji:"🔶", price:5600, lkr:"LKR 1,680,000", badge:"rare", origin:"Sri Lanka", carats:"2.4", clarity:"VVS1", desc:"The rarest sapphire variety — a lotus-blossom pink-orange padparadscha from the legendary sapphire mines of Sri Lanka.", specs:{Origin:"Sri Lanka",Carats:"2.4 ct",Clarity:"VVS1",Cut:"Oval",Treatment:"None",Certified:"GRS"} },
+  { id:9, name:"Alexandrite", category:"Topaz", emoji:"🟣", price:4200, lkr:"LKR 1,260,000", badge:"rare", origin:"Brazil", carats:"1.8", clarity:"VS2", desc:"The colour-change miracle — alexandrite shifts from vivid green in daylight to deep raspberry red under incandescent light.", specs:{Origin:"Brazil",Carats:"1.8 ct",Clarity:"VS2",Cut:"Oval",Treatment:"None",Certified:"GIA"} },
+  { id:10, name:"Tsavorite Garnet", category:"Emerald", emoji:"🍀", price:760, lkr:"LKR 228,000", badge:"new", origin:"Kenya", carats:"3.5", clarity:"VVS1", desc:"Vivid green tsavorite garnet — a stunning emerald alternative with superior clarity and brilliance. Ethically sourced from Kenya.", specs:{Origin:"Kenya",Carats:"3.5 ct",Clarity:"VVS1",Cut:"Cushion",Treatment:"None",Certified:"IGI"} },
+  { id:11, name:"Fancy Pink Diamond", category:"Diamond", emoji:"🌸", price:12000, lkr:"LKR 3,600,000", badge:"rare", origin:"Australia", carats:"0.8", clarity:"VS1", desc:"Rare natural fancy pink diamond — one of nature's most precious and sought-after gems. Argyle certified fancy pink.", specs:{Origin:"Australia",Carats:"0.8 ct",Clarity:"VS1",Cut:"Oval",Treatment:"None",Certified:"GIA"} },
+  { id:12, name:"Paraíba Tourmaline", category:"Amethyst", emoji:"🩵", price:6800, lkr:"LKR 2,040,000", badge:"rare", origin:"Brazil", carats:"1.2", clarity:"VVS1", desc:"Electrifying neon blue-green Paraíba tourmaline — one of the most valuable gems per carat in the world.", specs:{Origin:"Brazil",Carats:"1.2 ct",Clarity:"VVS1",Cut:"Round",Treatment:"None",Certified:"GRS"} }
+];
+
+// ═══════════════════════════════════════
+// STATE
+// ═══════════════════════════════════════
+let cart = [];
+let currentFilter = 'All';
+let isLoggedIn = false;
+let currentUser = null;
+let activeModalGem = null;
+let priceMax = 10000;
+
+// ═══════════════════════════════════════
+// LOADER
+// ═══════════════════════════════════════
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('hide');
+    initParticles();
+    renderHomeGems('All');
+    renderShopGems(gems);
+    animateCounters();
+    initScrollAnimations();
+  }, 2800);
+});
+
+// ═══════════════════════════════════════
+// PARTICLES
+// ═══════════════════════════════════════
+function initParticles() {
+  const container = document.getElementById('particles');
+  for(let i = 0; i < 30; i++) {
+    const p = document.createElement('div');
+    p.className = 'particle';
+    p.style.cssText = `
+      left:${Math.random()*100}%;
+      width:${Math.random()*3+1}px;
+      height:${Math.random()*3+1}px;
+      animation-duration:${Math.random()*20+15}s;
+      animation-delay:${Math.random()*15}s;
+      opacity:${Math.random()*0.5};
+    `;
+    container.appendChild(p);
+  }
+}
+
+// ═══════════════════════════════════════
+// NAVIGATION
+// ═══════════════════════════════════════
+function showPage(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(`page-${page}`).classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+  if(page === 'payment') updatePaymentPage();
+  closeMobileNav();
+}
+
+function toggleMobileNav() {
+  const nav = document.getElementById('mobile-nav');
+  const ham = document.getElementById('hamburger');
+  nav.classList.toggle('open');
+  ham.classList.toggle('active');
+}
+function closeMobileNav() {
+  document.getElementById('mobile-nav').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('active');
+}
+
+// ═══════════════════════════════════════
+// CART
+// ═══════════════════════════════════════
+function toggleCart() {
+  const overlay = document.getElementById('cart-overlay');
+  const sidebar = document.getElementById('cart-sidebar');
+  overlay.classList.toggle('open');
+  sidebar.classList.toggle('open');
+}
+
+function addToCart(gemId) {
+  const gem = gems.find(g => g.id === gemId);
+  if(!gem) return;
+  const existing = cart.find(c => c.id === gemId);
+  if(existing) { existing.qty++; }
+  else { cart.push({...gem, qty:1}); }
+  updateCart();
+  showToast(`✨ ${gem.name} added to your bag!`);
+}
+
+function addToCartDirect(item) {
+  const existing = cart.find(c => c.name === item.name);
+  if(existing) { existing.qty++; }
+  else { cart.push({id: Date.now(), name:item.name, emoji:item.emoji, price:item.price, category:item.category, qty:1}); }
+  updateCart();
+  showToast(`✨ ${item.name} added to your bag!`);
+}
+
+function addToCartFromModal() {
+  if(activeModalGem) { addToCart(activeModalGem.id); closeModal(); }
+}
+
+function removeFromCart(id) {
+  cart = cart.filter(c => c.id !== id);
+  updateCart();
+}
+
+function changeQty(id, delta) {
+  const item = cart.find(c => c.id === id);
+  if(item) {
+    item.qty += delta;
+    if(item.qty <= 0) { removeFromCart(id); return; }
+  }
+  updateCart();
+}
+
+function updateCart() {
+  const count = cart.reduce((s,c) => s + c.qty, 0);
+  const total = cart.reduce((s,c) => s + c.price*c.qty, 0);
+  const badge = document.getElementById('cart-count');
+  if(count > 0) { badge.style.display='flex'; badge.textContent=count; }
+  else { badge.style.display='none'; }
+  document.getElementById('cart-item-count').textContent = count ? `(${count})` : '';
+
+  const container = document.getElementById('cart-items-container');
+  const footer = document.getElementById('cart-footer');
+
+  if(cart.length === 0) {
+    container.innerHTML = `<div class="cart-empty"><i class="fas fa-shopping-bag"></i><p>Your bag is empty</p><span style="font-size:0.8rem;color:var(--text-muted)">Add some precious gems to get started</span></div>`;
+    footer.style.display = 'none';
+    return;
+  }
+  footer.style.display = 'block';
+  container.innerHTML = cart.map(item => `
+    <div class="cart-item">
+      <div class="cart-item-icon">${item.emoji}</div>
+      <div class="cart-item-info">
+        <div class="cart-item-name">${item.name}</div>
+        <div class="cart-item-cat">${item.category}</div>
+        <div class="cart-item-controls">
+          <button class="qty-btn" onclick="changeQty(${item.id},-1)">−</button>
+          <span class="qty-num">${item.qty}</span>
+          <button class="qty-btn" onclick="changeQty(${item.id},1)">+</button>
+        </div>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:flex-end;gap:8px">
+        <button class="cart-remove" onclick="removeFromCart(${item.id})"><i class="fas fa-trash"></i></button>
+        <div class="cart-item-price">$${(item.price*item.qty).toLocaleString()}</div>
+      </div>
+    </div>
+  `).join('');
+  document.getElementById('cart-subtotal').textContent = `$${total.toLocaleString()}`;
+  document.getElementById('cart-total').textContent = `$${total.toLocaleString()}`;
+}
+
+// ═══════════════════════════════════════
+// GEM CARDS
+// ═══════════════════════════════════════
+function gemCardHTML(gem) {
+  return `
+  <div class="gem-card" id="gem-card-${gem.id}">
+    <div class="gem-card-img">
+      <div class="gem-emoji">${gem.emoji}</div>
+      <div class="gem-card-overlay"></div>
+      ${gem.badge ? `<div class="gem-badge badge-${gem.badge}">${gem.badge.toUpperCase()}</div>` : ''}
+      <div class="gem-wishlist" onclick="toggleWishlist(this)"><i class="far fa-heart"></i></div>
+    </div>
+    <div class="gem-card-body">
+      <div class="gem-category">${gem.category} · ${gem.origin}</div>
+      <div class="gem-name">${gem.name}</div>
+      <div class="gem-desc">${gem.desc.substring(0,90)}...</div>
+      <div class="gem-specs">
+        <div class="gem-spec">Carats: <span>${gem.carats}</span></div>
+        <div class="gem-spec">Clarity: <span>${gem.clarity}</span></div>
+      </div>
+      <div class="gem-card-footer">
+        <div class="gem-price">
+          <span class="price-usd">$${gem.price.toLocaleString()}</span>
+          <span class="price-lkr">${gem.lkr}</span>
+        </div>
+        <div style="display:flex;gap:8px">
+          <button class="btn-outline" style="padding:9px 12px;font-size:0.65rem" onclick="openModal(${gem.id})"><i class="fas fa-eye"></i></button>
+          <button class="btn-add-cart" onclick="addToCart(${gem.id})">ADD TO BAG</button>
+        </div>
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderHomeGems(filter) {
+  const filtered = filter === 'All' ? gems.slice(0,6) : gems.filter(g => g.category === filter).slice(0,6);
+  document.getElementById('home-gems-grid').innerHTML = filtered.map(gemCardHTML).join('');
+}
+
+function renderShopGems(arr) {
+  document.getElementById('shop-gems-grid').innerHTML = arr.map(gemCardHTML).join('');
+  document.getElementById('shop-results-count').innerHTML = `<strong>${arr.length}</strong> gems found`;
+}
+
+function filterHome(btn, filter) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  renderHomeGems(filter);
+}
+
+function filterShop(filter) {
+  showPage('shop');
+  setTimeout(() => {
+    const filtered = filter === 'All' ? gems : gems.filter(g => g.category === filter);
+    renderShopGems(filtered);
+  }, 100);
+}
+
+function applyFilters() {
+  const checked = [...document.querySelectorAll('#page-shop input[type=checkbox]:checked')].map(c => c.value);
+  let filtered = gems.filter(g => g.price <= priceMax);
+  if(checked.length > 0) filtered = filtered.filter(g => checked.includes(g.category));
+  renderShopGems(filtered);
+}
+
+function updatePriceRange(val) {
+  priceMax = parseInt(val);
+  document.getElementById('price-max-label').textContent = `$${parseInt(val).toLocaleString()}`;
+  applyFilters();
+}
+
+function clearFilters() {
+  document.querySelectorAll('#page-shop input[type=checkbox]').forEach(c => c.checked = false);
+  priceMax = 10000;
+  document.querySelector('.price-range').value = 10000;
+  document.getElementById('price-max-label').textContent = '$10,000';
+  renderShopGems(gems);
+}
+
+function sortGems(val) {
+  let arr = [...gems];
+  if(val === 'price-asc') arr.sort((a,b) => a.price-b.price);
+  else if(val === 'price-desc') arr.sort((a,b) => b.price-a.price);
+  else if(val === 'name-asc') arr.sort((a,b) => a.name.localeCompare(b.name));
+  renderShopGems(arr);
+}
+
+function toggleWishlist(btn) {
+  btn.classList.toggle('active');
+  btn.innerHTML = btn.classList.contains('active') ? '<i class="fas fa-heart"></i>' : '<i class="far fa-heart"></i>';
+  if(btn.classList.contains('active')) showToast('❤️ Added to wishlist!');
+}
+
+// ═══════════════════════════════════════
+// PRODUCT MODAL
+// ═══════════════════════════════════════
+function openModal(id) {
+  const gem = gems.find(g => g.id === id);
+  if(!gem) return;
+  activeModalGem = gem;
+  document.getElementById('modal-img').textContent = gem.emoji;
+  document.getElementById('modal-cat').textContent = `${gem.category} · ${gem.origin}`;
+  document.getElementById('modal-name').textContent = gem.name;
+  document.getElementById('modal-price').textContent = `$${gem.price.toLocaleString()}`;
+  document.getElementById('modal-desc').textContent = gem.desc;
+  document.getElementById('modal-specs').innerHTML = Object.entries(gem.specs).map(([k,v]) => `
+    <div class="modal-spec"><div class="modal-spec-label">${k}</div><div class="modal-spec-val">${v}</div></div>
+  `).join('');
+  document.getElementById('product-modal').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  document.getElementById('product-modal').classList.remove('open');
+  document.body.style.overflow = '';
+  activeModalGem = null;
+}
+document.getElementById('product-modal').addEventListener('click', e => { if(e.target === document.getElementById('product-modal')) closeModal(); });
+
+// ═══════════════════════════════════════
+// PAYMENT
+// ═══════════════════════════════════════
+function updatePaymentPage() {
+  const total = cart.reduce((s,c) => s + c.price*c.qty, 0);
+  const itemsContainer = document.getElementById('payment-order-items');
+  if(cart.length === 0) {
+    itemsContainer.innerHTML = `<div style="text-align:center;padding:30px;color:var(--text-muted)"><i class="fas fa-shopping-bag" style="font-size:2rem;margin-bottom:12px;display:block;color:rgba(201,168,76,0.2)"></i>Your cart is empty. <a href="#" onclick="showPage('shop')" style="color:var(--gold)">Browse gems →</a></div>`;
+  } else {
+    itemsContainer.innerHTML = cart.map(item => `
+      <div class="order-item">
+        <div class="order-item-icon">${item.emoji}</div>
+        <div>
+          <div class="order-item-name">${item.name}</div>
+          <div class="order-item-qty">Qty: ${item.qty}</div>
+        </div>
+        <div class="order-item-price">$${(item.price*item.qty).toLocaleString()}</div>
+      </div>
+    `).join('');
+  }
+  document.getElementById('pay-sub').textContent = `$${total.toLocaleString()}`;
+  document.getElementById('pay-total').textContent = `$${(total+25).toLocaleString()}`;
+}
+
+function switchPayTab(btn, tab) {
+  document.querySelectorAll('.form-tab').forEach(t => t.classList.remove('active'));
+  btn.classList.add('active');
+  ['card','paypal','crypto'].forEach(t => {
+    const el = document.getElementById(`pay-${t}`);
+    if(el) el.style.display = t === tab ? '' : 'none';
+  });
+}
+
+function placeOrder() {
+  if(cart.length === 0) { showToast('⚠️ Your bag is empty!'); return; }
+  showToast('🎉 Order placed! You\'ll receive a confirmation email shortly.');
+  setTimeout(() => { cart = []; updateCart(); showPage('home'); }, 2000);
+}
+
+function formatCardNum(input) {
+  let v = input.value.replace(/\D/g,'').substring(0,16);
+  input.value = v.replace(/(.{4})/g,'$1 ').trim();
+}
+
+function formatExpiry(input) {
+  let v = input.value.replace(/\D/g,'').substring(0,4);
+  if(v.length >= 2) v = v.substring(0,2) + ' / ' + v.substring(2);
+  input.value = v;
+}
+
+// ═══════════════════════════════════════
+// AUTH
+// ═══════════════════════════════════════
+function switchAuthTab(tab) {
+  document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+  document.getElementById(`auth-${tab}`).classList.add('active');
+  event && event.target.classList.add('active');
+  if(!event) document.querySelectorAll('.auth-tab')[tab === 'login' ? 0 : 1].classList.add('active');
+}
+
+function handleLogin() {
+  const email = document.getElementById('login-email').value;
+  const pass = document.getElementById('login-pass').value;
+  if(!email || !pass) { showToast('⚠️ Please fill in all fields'); return; }
+  isLoggedIn = true;
+  currentUser = email.split('@')[0];
+  document.getElementById('signin-nav-btn').textContent = `Hi, ${currentUser}`;
+  document.getElementById('user-nav-btn').innerHTML = '<i class="fas fa-user-check" style="color:var(--gold)"></i>';
+  showToast(`Welcome back, ${currentUser}! 💎`);
+  setTimeout(() => showPage('home'), 1000);
+}
+
+function handleRegister() {
+  showToast('🎉 Account created! Welcome to Zurichoice.');
+  setTimeout(() => showPage('home'), 1000);
+}
+
+// ═══════════════════════════════════════
+// CONTACT
+// ═══════════════════════════════════════
+function sendContact() {
+  showToast('✉️ Message sent! We\'ll reply within 24 hours.');
+}
+
+// ═══════════════════════════════════════
+// TOAST
+// ═══════════════════════════════════════
+let toastTimer;
+function showToast(msg) {
+  const toast = document.getElementById('toast');
+  const msgEl = document.getElementById('toast-msg');
+  msgEl.textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 3500);
+}
+
+// ═══════════════════════════════════════
+// COUNTERS
+// ═══════════════════════════════════════
+function animateCounters() {
+  document.querySelectorAll('[data-count]').forEach(el => {
+    const target = parseInt(el.getAttribute('data-count'));
+    let current = 0;
+    const step = target / 60;
+    const timer = setInterval(() => {
+      current = Math.min(current + step, target);
+      el.textContent = Math.round(current) + '+';
+      if(current >= target) clearInterval(timer);
+    }, 25);
+  });
+}
+
+// ═══════════════════════════════════════
+// SCROLL ANIMATIONS
+// ═══════════════════════════════════════
+function initScrollAnimations() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+}
+
+// ═══════════════════════════════════════
+// AUTH TAB CLICK
+// ═══════════════════════════════════════
+document.querySelectorAll('.auth-tab').forEach((btn, i) => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+    btn.classList.add('active');
+    document.querySelectorAll('.auth-form')[i].classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
